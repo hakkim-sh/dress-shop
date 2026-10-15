@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f4ef">
+  <title>TrendVibe Fashion | Wear your own kind of beautiful</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="store.js" defer></script>
+</head>
+<body>
+  <div class="announcement">A little something for your wardrobe — enjoy 10% off your first order <span>with code HELLO10</span></div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="TrendVibe Fashion home">
+      <span class="brand-mark">TV</span>
+      <span class="brand-name">TrendVibe <span>Fashion</span></span>
+    </a>
+    <button class="menu-toggle icon-button" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a class="active" href="#home">Home</a>
+      <a href="#categories">Collections</a>
+      <a href="#products">Shop all</a>
+      <!-- Password popup call panna update panniyachu -->
+      <a href="javascript:void(0)" onclick="handleOwnerAccess()">Owner panel</a>
+    </nav>
+    <div class="header-actions">
+      <label class="search-box" aria-label="Search products">
+        <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+        <input id="product-search" type="search" placeholder="Search dresses..." autocomplete="off">
+      </label>
+      <button class="icon-button cart-toggle" aria-label="Open shopping cart">
+        <svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 1.9-1.5L22 8H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+        <span class="count-badge cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <span class="eyebrow">THE ART OF GETTING DRESSED</span>
+        <h1>Elevate Your Style —<br><em>New Collection</em></h1>
+        <p>Thoughtful pieces, made for the moments that make you feel most like you.</p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#products">Shop Now ↗</a>
+          <a class="button button-outline" href="#categories">Explore Collections</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section categories-section" id="categories">
+      <div class="section-heading">
+        <div><span class="eyebrow">COLLECTIONS</span><h2>Find your <em>style</em></h2></div>
+      </div>
+      <div class="category-grid">
+        <div class="category-card" data-filter-link="Women"><h3>Women's Wear</h3></div>
+        <div class="category-card" data-filter-link="Men"><h3>Men's Wear</h3></div>
+        <div class="category-card" data-filter-link="Traditional / Ethnic"><h3>Traditional Wear</h3></div>
+        <div class="category-card" data-filter-link="Kids"><h3>Kids' Wear</h3></div>
+      </div>
+    </section>
+
+    <section class="section products-section" id="products">
+      <div class="section-heading">
+        <div><span class="eyebrow">HANDPICKED FOR YOU</span><h2>Pieces to <em>live in</em></h2></div>
+      </div>
+      <div class="product-toolbar">
+        <div class="filter-list">
+          <button class="filter-button active" data-filter="All">All pieces</button>
+          <button class="filter-button" data-filter="Women">Women</button>
+          <button class="filter-button" data-filter="Men">Men</button>
+          <button class="filter-button" data-filter="Kids">Kids</button>
+          <button class="filter-button" data-filter="Traditional / Ethnic">Ethnic</button>
+          <button class="filter-button" data-filter="Western">Western</button>
+        </div>
+        <span class="result-count"></span>
+      </div>
+      <div class="product-grid"></div>
+      <p class="empty-results" hidden>No pieces found. Try another search or category.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-bottom">
+      <span>© 2026 TrendVibe Fashion. All rights reserved.</span>
+      <a href="javascript:void(0)" onclick="handleOwnerAccess()">Owner Panel</a>
+    </div>
+  </footer>
+
+  <div class="drawer-backdrop"></div>
+  <aside class="cart-drawer">
+    <div class="drawer-header">
+      <h2>Your Bag <span class="drawer-item-count">(0)</span></h2>
+      <button class="drawer-close icon-button">×</button>
+    </div>
+    <div class="cart-items"></div>
+    <div class="cart-empty"><p>Your bag is empty.</p></div>
+    <div class="drawer-footer">
+      <div class="cart-subtotal"><span>Subtotal:</span> <strong>₹0</strong></div>
+      <button class="button button-dark checkout-button">Checkout</button>
+    </div>
+  </aside>
+  <div class="toast"></div>
+
+  <!-- Owner password script -->
+  <script>
+    function handleOwnerAccess() {
+      const secretPassword = "admin"; // Neenga thevaipatta password-ah inga set pannikonga
+      const enteredPassword = prompt("Owner Verification: Control Panel password enter pannunga:");
+
+      if (enteredPassword === null) return; // Cancel click panna
+
+      if (enteredPassword === secretPassword) {
+        sessionStorage.setItem("admin_authenticated", "true");
+        window.location.href = "admin.html";
+      } else {
+        alert("Access Denied! Thappana Password.");
+      }
+    }
+  </script>
+</body>
+</html>
